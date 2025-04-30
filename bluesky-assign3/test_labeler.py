@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 from pylabel import AutomatedLabeler, label_post, did_from_handle
 
 load_dotenv(override=True)
-USERNAME = os.getenv("USERNAME")
-PW = os.getenv("PW")
+USERNAME = os.getenv("USERNAME", "jaanvi-ts.bsky.social")
+PW = os.getenv("PW", "ChimkenNugget$25")
 
 def main():
     """

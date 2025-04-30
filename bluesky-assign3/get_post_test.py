@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 from pylabel import post_from_url
 
 load_dotenv(override=True)
-USERNAME = os.getenv("USERNAME")
-PW = os.getenv("PW")
+USERNAME = os.getenv("USERNAME", "jaanvi-ts.bsky.social")
+PW = os.getenv("PW", "ChimkenNugget$25")
 
 
 def main():
@@ -24,3 +24,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
