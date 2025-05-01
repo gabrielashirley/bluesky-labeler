@@ -30,6 +30,7 @@ PANIC_REGEX = re.compile("|".join(PANIC_PATTERNS), re.IGNORECASE)
 def search_and_collect_posts(keywords, max_posts=100, per_keyword_limit=10):
     collected = []
     matched_count = 1
+    seen_texts = set()
 
     for kw in keywords:
         print(f"\nSearching for: '{kw}'")
@@ -57,7 +58,11 @@ def search_and_collect_posts(keywords, max_posts=100, per_keyword_limit=10):
                 if not rec or not hasattr(rec, "text"):
                     continue
 
+                # unsure only unique posts
                 text = rec.text.strip()
+                if text in seen_texts:
+                    continue
+                seen_texts.add(text)
                 if kw.lower() not in text.lower():
                     continue
                 if not PANIC_REGEX.search(text):

@@ -21,8 +21,20 @@ def print_results(results):
     for index, text, label in results:
         print(f"Post {index}:\nText: {text}\nLabel: {label}\n")
 
+def save_results_to_csv(results, output_path):
+    with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=['post_index', 'text', 'label'])
+        writer.writeheader()
+        for index, text, label in results:
+            writer.writerow({
+                'post_index': index,
+                'text': text,
+                'label': label if label else "[]"
+            })
+
 if __name__ == "__main__":
     csv_path = "./bluesky-assign3/test-data/input-posts-panic.csv"
     posts = load_posts_from_csv(csv_path)
     results = run_labeler_on_posts(posts)
+    save_results_to_csv(results, './bluesky-assign3/output-csv/labeled_output.csv')
     print_results(results)
