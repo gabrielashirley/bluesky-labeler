@@ -15,7 +15,7 @@ client.login(USERNAME, PASSWORD)
 PANIC_KEYWORDS = [
     "threat", "emergency", "evacuate", "shelter", "crisis",
     "urgent", "alert", "warning", "danger", "disaster",
-    "breaking", "act now", "wake up", "they don’t want you to know"
+    "breaking", "act now", "wake up"
 ]
 
 # Panic-inducing regex patterns

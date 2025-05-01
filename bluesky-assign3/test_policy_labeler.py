@@ -22,7 +22,7 @@ def print_results(results):
         print(f"Post {index}:\nText: {text}\nLabel: {label}\n")
 
 if __name__ == "__main__":
-    csv_path = "./bluesky-assign3/test-data/panic-test.csv"  # Make sure this file exists!
+    csv_path = "./bluesky-assign3/test-data/input-posts-panic.csv"
     posts = load_posts_from_csv(csv_path)
     results = run_labeler_on_posts(posts)
     print_results(results)
