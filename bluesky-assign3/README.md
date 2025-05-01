@@ -1,10 +1,8 @@
-# 🔍 Bluesky Policy Labeler: Panic-Language Detection
+# Bluesky Policy Labeler: Panic-Language Detection
 
 ## Project Overview
 
-This project is a **policy labeler** designed to detect **likely panic-inducing or emotionally manipulative language** in public social media posts on [Bluesky](https://bsky.app/). It implements a simple yet powerful rule-based detection system to identify language patterns that may cause undue fear or anxiety in public discourse.
-
-The goal is to support **trust and safety efforts** by applying a content policy related to panic-language detection. This is in line with efforts to label or moderate harmful or manipulative posts across decentralized platforms.
+This project is a **policy labeler** designed to detect **likely panic-inducing** in public social media posts on [Bluesky](https://bsky.app/). It implements a simple yet powerful rule-based detection system to identify language patterns that may cause undue fear or anxiety in public discourse. The goal is to support **trust and safety efforts** by applying a content policy related to likely panic-language detection. This is in line with efforts to label or moderate harmful or manipulative posts across decentralized platforms.
 
 ---
 
