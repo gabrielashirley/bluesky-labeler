@@ -1,4 +1,4 @@
-# Bluesky Policy Labeler: Panic-Language Detection
+# Bluesky Policy Labeler: Likely-Panic-Language Detection
 
 ## Project Overview
 
