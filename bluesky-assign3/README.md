@@ -1,3 +1,71 @@
+# 🔍 Bluesky Policy Labeler: Panic-Language Detection
+
+## Project Overview
+
+This project is a **policy labeler** designed to detect **likely panic-inducing or emotionally manipulative language** in public social media posts on [Bluesky](https://bsky.app/). It implements a simple yet powerful rule-based detection system to identify language patterns that may cause undue fear or anxiety in public discourse.
+
+The goal is to support **trust and safety efforts** by applying a content policy related to panic-language detection. This is in line with efforts to label or moderate harmful or manipulative posts across decentralized platforms.
+
+---
+
+## Policy Summary: `likely-panic-language`
+
+The label **`likely-panic-language`** is applied to posts that contain **emotionally manipulative or panic-inducing** content based on the following criteria:
+
+- Use of language such as:  
+  ``"breaking news"`, `"immediate threat"`, `"danger to life"`, `"EMERGENCY!!!"` etc.
+- Usage of **urgency-related terms** in alarming contexts (e.g., natural disasters, mass alerts, evacuation, civil threat).
+- Posts that mimic **emergency alert tone**, **mass fear tactics**, or **disaster warnings**.
+
+Posts that **do not match these criteria** are left **unlabeled**.
+
+---
+
+## Project Structure
+
+| File / Folder                            | Description |
+|-----------------------------------------|-------------|
+| `policy_proposal_labeler.py`            | Main labeling class containing `moderate_post()` for applying the panic-language policy. |
+| `create_csv.py`                         | Collects posts using the Bluesky API and saves them to a CSV file (`input-posts-panic.csv`). |
+| `test_policy_labeler.py`                | Loads posts from CSV, applies the labeler, and prints + saves labeled output. |
+| `test-data/input-posts-panic.csv`       | The raw post data collected based on panic-related keywords. |
+| `output-csv/labeled_output.csv`         | Final labeled results saved as a CSV with each post and its detected label (if any). |
+| `README.md`                             | This file – describes the purpose, setup, and usage. |
+
+---
+
+## How It Works
+
+1. **Collect Data**  
+   Run `search_and_generate_data.py` to scrape Bluesky posts for relevant panic-related keywords. This generates `test-data/input-posts-panic.csv`.
+
+2. **Label Posts**  
+   Run `test_policy_labeler.py` to apply the panic-language labeler. This creates a new CSV file:  
+   ➜ `output-csv/labeled_output.csv`
+
+3. **Labeling Logic**  
+   Implemented in `policy_proposal_labeler.py`, the labeler uses a regex-based rule system to detect and label posts.
+
+---
+
+## Example Labels
+
+| Post Example | Label |
+|--------------|-------|
+| `DANGEROUS CONDITION-IMMEDIATE THREAT at RT 390...` | `likely-panic-language` |
+| `My baby is only one week old… She was born under bombing...` | `likely-panic-language` |
+| `Below is the decision that the Trump administration has just petitioned...` | *(no label)* |
+
+---
+
+## Future Improvements
+
+- Switch to a hybrid model combining regex and ML.
+- Introduce support for **soft warning labels** like `potential-panic-language`.
+- Add visualization/dashboard.
+
+---
+
 # Bluesky labeler starter code
 You'll find the starter code for Assignment 3 in this repository. More detailed
 instructions can be found in the assignment spec.
