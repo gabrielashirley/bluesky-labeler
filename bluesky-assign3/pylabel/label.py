@@ -10,7 +10,10 @@ from atproto_client.models.com.atproto.admin.defs import RepoRef
 from atproto_client.models.com.atproto.repo.strong_ref import Main
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+from pathlib import Path
+env_path = Path(__file__).resolve().parents[1] / '.env'
+load_dotenv(dotenv_path=env_path, override=True)
+
 USERNAME = os.getenv("USERNAME")
 PW = os.getenv("PW")
 
