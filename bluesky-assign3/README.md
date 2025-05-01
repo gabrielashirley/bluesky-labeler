@@ -11,7 +11,7 @@ This project is a **policy labeler** designed to detect **likely panic-inducing*
 The label **`likely-panic-language`** is applied to posts that contain **emotionally manipulative or panic-inducing** content based on the following criteria:
 
 - Use of language such as:  
-  ``"breaking news"`, `"immediate threat"`, `"danger to life"`, `"EMERGENCY!!!"` etc.
+  `"breaking news"`, `"immediate threat"`, `"danger to life"`, `"EMERGENCY!!!"` etc.
 - Usage of **urgency-related terms** in alarming contexts (e.g., natural disasters, mass alerts, evacuation, civil threat).
 - Posts that mimic **emergency alert tone**, **mass fear tactics**, or **disaster warnings**.
 
@@ -21,7 +21,7 @@ Posts that **do not match these criteria** are left **unlabeled**.
 
 ## Project Structure
 
-| File / Folder                            | Description |
+| File                                    | Description |
 |-----------------------------------------|-------------|
 | `policy_proposal_labeler.py`            | Main labeling class containing `moderate_post()` for applying the panic-language policy. |
 | `create_csv.py`                         | Collects posts using the Bluesky API and saves them to a CSV file (`input-posts-panic.csv`). |
@@ -35,7 +35,7 @@ Posts that **do not match these criteria** are left **unlabeled**.
 ## How It Works
 
 1. **Collect Data**  
-   Run `search_and_generate_data.py` to scrape Bluesky posts for relevant panic-related keywords. This generates `test-data/input-posts-panic.csv`.
+   Run `create_csv.py` to scrape Bluesky posts for relevant panic-related keywords. This generates `test-data/input-posts-panic.csv`.
 
 2. **Label Posts**  
    Run `test_policy_labeler.py` to apply the panic-language labeler. This creates a new CSV file:  
@@ -52,7 +52,7 @@ Posts that **do not match these criteria** are left **unlabeled**.
 |--------------|-------|
 | `DANGEROUS CONDITION-IMMEDIATE THREAT at RT 390...` | `likely-panic-language` |
 | `My baby is only one week old… She was born under bombing...` | `likely-panic-language` |
-| `Below is the decision that the Trump administration has just petitioned...` | *(no label)* |
+| `Below is the decision that the Trump administration has just petitioned...` | [] *(no label)* |
 
 ---
 
