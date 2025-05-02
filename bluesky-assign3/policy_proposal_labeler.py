@@ -1,6 +1,8 @@
 """Policy Proposal Labeler: Likely Panic Language Detector"""
 
 import re
+import time
+import sys
 from typing import Optional
 
 PANIC_LABEL = "likely-panic-language"
@@ -46,10 +48,22 @@ class PanicLanguageLabeler:
 
     def moderate_post(self, text: str) -> Optional[str]:
         """Returns a label if panic signals exceed threshold."""
+
+        start_time = time.perf_counter()
+
         if not text:
+            end_time = time.perf_counter()
+            print(f"[DEBUG] Time to label post: {end_time - start_time:.6f} seconds")
             return None
 
         score = self._count_panic_signals(text)
+        print(f"[DEBUG] Panic score memory: {sys.getsizeof(score)} bytes")
+
         if score >= self.keyword_threshold:
+            end_time = time.perf_counter()
+            print(f"[DEBUG] Time to label post: {end_time - start_time:.6f} seconds")
             return PANIC_LABEL
+        
+        end_time = time.perf_counter()
+        print(f"[DEBUG] Time to label post: {end_time - start_time:.6f} seconds")
         return None
