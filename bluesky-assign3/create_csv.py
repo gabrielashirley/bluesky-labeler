@@ -27,7 +27,7 @@ PANIC_PATTERNS = [
 ]
 PANIC_REGEX = re.compile("|".join(PANIC_PATTERNS), re.IGNORECASE)
 
-def search_and_collect_posts(keywords, max_posts=100, per_keyword_limit=10):
+def search_and_collect_posts(keywords, max_posts=500, per_keyword_limit=50):
     collected = []
     matched_count = 1
     seen_texts = set()
@@ -75,6 +75,7 @@ def search_and_collect_posts(keywords, max_posts=100, per_keyword_limit=10):
                     "text": text,
                     "keyword": kw,
                     "creator": p.author.handle,
+                    "rkey": p.uri.split("/")[-1],
                     "likes": getattr(p, "like_count", 0),
                     "reposts": getattr(p, "repost_count", 0),
                     "responses": getattr(p, "reply_count", 0),
